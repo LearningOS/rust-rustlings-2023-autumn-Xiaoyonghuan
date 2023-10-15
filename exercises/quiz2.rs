@@ -20,7 +20,6 @@
 //
 // No hints this time!
 
-// I AM NOT DONE
 
 pub enum Command {
     Uppercase,
@@ -31,22 +30,51 @@ pub enum Command {
 mod my_module {
     use super::Command;
 
-    // TODO: Complete the function signature!
-    pub fn transformer(input: ???) -> ??? {
-        // TODO: Complete the output declaration!
-        let mut output: ??? = vec![];
-        for (string, command) in input.iter() {
-            // TODO: Complete the function body. You can do it!
+        // TODO: Complete the function signature!
+    pub fn transformer(input: Vec<(String,Command)>)-> Vec<String> {
+            // TODO: Complete the output declaration!
+        let mut output=vec![];
+        for (s,command) in input.iter() {
+            match command {
+                Command::Uppercase => output.push(s.to_ascii_uppercase()),
+                Command::Trim => output.push(s.trim().into()),
+                Command::Append(n) => {
+                    let mut t=s.to_string();
+                    for i in 0..*n {
+                        t.push_str("bar");
+                        
+                    }
+                    output.push(t);
+                },
+            }
         }
         output
     }
+
+   
+
+    // // TODO: Complete the function signature!
+    // pub fn transformer(input: Vec<(String,Command)>)-> Vec<&str> {
+    //     // TODO: Complete the output declaration!
+    //     // let mut output: Vec<&str> = vec![];
+    //     // for (&string, command) in input.iter() {
+    //     //     // TODO: Complete the function body. You can do it!
+    //     //     match command {
+    //     //         Command::Uppercase=>output.push("HELLO".into()),
+    //     //         Command::Trim => output.push("all roads lead to rome!".into()),
+    //     //         Command::Append(1) => output.push("foobar".into()),
+    //     //         Command::Append(5) => output.push("barbarbarbarbarbar".into()),
+    //     //     }
+    //     // }
+    //     // output
+    // }
 }
 
 #[cfg(test)]
 mod tests {
     // TODO: What do we need to import to have `transformer` in scope?
-    use ???;
     use super::Command;
+    use crate::my_module::transformer;
 
     #[test]
     fn it_works() {
